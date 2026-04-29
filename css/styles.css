@@ -23,11 +23,12 @@
     outline-offset: 4px;
 }
 
-/* Coaching pages override via <body class="coaching"> */
+/* Acting Training pages override via <body class="coaching"> */
 body.coaching {
-    --bg:     var(--warm-off-white);
-    --fg:     #1E1B17;
-    --accent: var(--terracotta);
+    /* "The Studio" - A safe, trusting, rigorous space */
+    --bg:     #F2F2F0; /* A crisp, neutral studio wall (removes the spa yellow/peach) */
+    --fg:     #1C1E1C; /* Grounded charcoal, highly accessible but softer than pure black */
+    --accent: #4A5D4E; /* Muted studio green - universally signals 'safety' and 'growth' */
 }
 
 /* ── Reset ──────────────────────────────────────────────── */
@@ -77,30 +78,29 @@ h3 {
     height: 100dvh;
     width: 100%;
     background: #000;
+    position: relative;
 }
 
+/* EDITORIAL TOP ANCHOR: Calm, static, high-end */
 .gateway-brand {
     position: absolute;
-    top: 50%;
+    top: 3.5rem; /* Pinned to the top */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     z-index: 10;
     pointer-events: none;
     text-align: center;
-    transition: all 0.6s var(--ease-cinematic);
 }
 
 .gateway-brand span {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
     color: #fff;
-    letter-spacing: 14px;
+    letter-spacing: 12px;
     text-transform: uppercase;
+    opacity: 0.85; /* Softened so it doesn't distract from the photography */
 }
 
-/* Shift brand away from the hovered side */
-#gateway:has(.photo-side:hover) .gateway-brand { transform: translate(20%, -50%); opacity: 0.15; }
-#gateway:has(.coach-side:hover) .gateway-brand { transform: translate(-120%, -50%); opacity: 0.15; }
 
 .gateway-side {
     flex: 1;
@@ -111,7 +111,6 @@ h3 {
     align-items: center;
     overflow: hidden;
     text-decoration: none;
-    /* Snappier transition right here: */
     transition: flex 0.4s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
@@ -139,7 +138,8 @@ h3 {
 }
 
 .coach-side .gate-bg {
-    background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80');
+    /* Dramatic, creative empty stage / rehearsal room lighting */
+    background-image: url('https://images.unsplash.com/photo-1507924538820-ace2d55b809c?auto=format&fit=crop&w=1600&q=80');
     border-left: 1px solid rgba(255,255,255,0.06);
 }
 
