@@ -9,14 +9,18 @@
     --warm-off-white: #F5F0E8;
     --brass:          #B8965A;
     --terracotta:     #B85C4A;
-    --text-muted:     0.55;
+    --text-muted:     0.7; /* Increased from 0.55 for WCAG Accessibility */
 
     --ease-cinematic: cubic-bezier(0.76, 0, 0.24, 1);
-
-    /* Default (photography) theme */
+    
     --bg:     var(--dark);
     --fg:     #F5F0E8;
     --accent: var(--brass);
+}
+
+*:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
 }
 
 /* Coaching pages override via <body class="coaching"> */
@@ -178,7 +182,7 @@ h3 {
 
 
 /* ═══════════════════════════════════════════════════════════
-   NAVIGATION  (all inner pages)
+   NAVIGATION
 ═══════════════════════════════════════════════════════════ */
 nav {
     position: fixed;
@@ -191,9 +195,7 @@ nav {
     align-items: center;
     background: var(--bg);
     border-bottom: 1px solid rgba(128,128,128,0.12);
-
-    /* Page-load reveal */
-    animation: navReveal 0.7s var(--ease-cinematic) both;
+    /* REMOVED: animation: navReveal */
 }
 
 @keyframes navReveal {
@@ -231,7 +233,7 @@ nav {
 }
 .nav-links a:hover { opacity: 0.8; }
 
-.nav-links a.active {
+.nav-links a[aria-current="page"] {
     opacity: 1;
     color: var(--accent);
     border-bottom: 1px solid var(--accent);
@@ -260,7 +262,7 @@ main {
     padding: clamp(110px, 14vw, 190px) 5% 100px;
     max-width: 1300px;
     margin: 0 auto;
-    animation: contentReveal 0.8s var(--ease-cinematic) 0.15s both;
+    /* REMOVED: animation: contentReveal */
 }
 
 @keyframes contentReveal {
