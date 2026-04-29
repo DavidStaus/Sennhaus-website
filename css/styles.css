@@ -23,12 +23,11 @@
     outline-offset: 4px;
 }
 
-/* Acting Training pages override via <body class="coaching"> */
 body.coaching {
-    /* "The Studio" - A safe, trusting, rigorous space */
-    --bg:     #F2F2F0; /* A crisp, neutral studio wall (removes the spa yellow/peach) */
-    --fg:     #1C1E1C; /* Grounded charcoal, highly accessible but softer than pure black */
-    --accent: #4A5D4E; /* Muted studio green - universally signals 'safety' and 'growth' */
+    /* VIBE: Calming, imaginative, open, and psychologically safe */
+    --bg:     #F4F1F6; /* A whisper of warm, dusty lilac */
+    --fg:     #2A2432; /* Deep eggplant-charcoal (very accessible, softer than black) */
+    --accent: #7A5C83; /* Muted amethyst / dusty plum */
 }
 
 /* ── Reset ──────────────────────────────────────────────── */
