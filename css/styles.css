@@ -5,7 +5,7 @@
 
 /* ── Design tokens ──────────────────────────────────────── */
 :root {
-    --dark:           #161410;
+    --dark:           #0d2119;
     --warm-off-white: #F5F0E8;
     --brass:          #B8965A;
     --terracotta:     #B85C4A;
@@ -27,7 +27,7 @@
 body.coaching {
     --bg:     #2B2333; /* Lifted from black into a deep, warm velvet plum */
     --fg:     #F4EEF7; /* Soft, luminous lavender-white */
-    --accent: #A987C2; /* Soft dusty lavender */
+    --accent: #ae8cc7; /* Soft dusty lavender */
 }
 
 /* Accessibility overrides: Ensures text on lavender buttons/hovers is readable */
