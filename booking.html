@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session — Sennhaus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <nav aria-label="Main navigation">
+        <a class="nav-logo" href="../index.html">SENNHAUS</a>
+        <ul class="nav-links" role="list">
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="booking.html" class="active">Book Session</a></li>
+            <li><a href="../coaching/training.html" class="nav-switch">Acting Coaching →</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Book a Session</h1>
+
+        <div class="grid-2">
+            <div>
+                <p class="intro">Select your package and preferred month. I will contact you within 24 hours to finalize the date.</p>
+                <div class="card">
+                    <h3>The Professional</h3>
+                    <span class="price-tag">3.800 DKK</span>
+                    <ul class="feature-list">
+                        <li>3 Hours Studio &amp; Location</li>
+                        <li>Unlimited Wardrobe Changes</li>
+                        <li>6 Fine-art Retouched Images</li>
+                        <li>Online Preview Gallery</li>
+                    </ul>
+                </div>
+            </div>
+
+            <form class="booking-form" action="#" method="post" novalidate>
+                <label class="form-label" for="name">Full Name</label>
+                <input id="name" type="text" name="name" placeholder="Anna Lindqvist" autocomplete="name" required>
+
+                <label class="form-label" for="email">Email Address</label>
+                <input id="email" type="email" name="email" placeholder="anna@example.com" autocomplete="email" required>
+
+                <label class="form-label" for="package">Package</label>
+                <select id="package" name="package">
+                    <option>The Essential (2.400 DKK)</option>
+                    <option selected>The Professional (3.800 DKK)</option>
+                    <option>The Portfolio (5.500 DKK)</option>
+                </select>
+
+                <label class="form-label" for="goals">Your Goals</label>
+                <textarea id="goals" name="goals" placeholder="Tell me about your casting type or specific goals for this session…" rows="5"></textarea>
+
+                <button type="submit" class="submit-btn">Request Session</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <small>&copy; 2026 Sennhaus &mdash; David Senn &mdash; Vesterbro, Copenhagen</small>
+    </footer>
+
+</body>
+</html>
