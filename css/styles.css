@@ -24,10 +24,10 @@
 }
 
 body.coaching {
-    /* VIBE: Calming, imaginative, open, and psychologically safe */
-    --bg:     #F4F1F6; /* A whisper of warm, dusty lilac */
-    --fg:     #2A2432; /* Deep eggplant-charcoal (very accessible, softer than black) */
-    --accent: #7A5C83; /* Muted amethyst / dusty plum */
+    /* VIBE: Focused, enclosed, intimate, and deeply theatrical */
+    --bg:     #1B181E; /* Very dark, warm plum-black */
+    --fg:     #F2EEF5; /* Soft, lavender-tinted off-white */
+    --accent: #A685B5; /* Dusty lavender (glows beautifully against the dark) */
 }
 
 /* ── Reset ──────────────────────────────────────────────── */
