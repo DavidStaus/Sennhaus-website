@@ -23,12 +23,16 @@
     outline-offset: 4px;
 }
 
+/* VIBE: Intimate, velvety, and deeply creative */
 body.coaching {
-    /* VIBE: Focused, enclosed, intimate, and deeply theatrical */
-    --bg:     #1B181E; /* Very dark, warm plum-black */
-    --fg:     #F2EEF5; /* Soft, lavender-tinted off-white */
-    --accent: #A685B5; /* Dusty lavender (glows beautifully against the dark) */
+    --bg:     #2B2333; /* Lifted from black into a deep, warm velvet plum */
+    --fg:     #F4EEF7; /* Soft, luminous lavender-white */
+    --accent: #A987C2; /* Soft dusty lavender */
 }
+
+/* Accessibility overrides: Ensures text on lavender buttons/hovers is readable */
+body.coaching .submit-btn { color: var(--bg); font-weight: 500; }
+body.coaching .nav-switch:hover { color: var(--bg) !important; }
 
 /* ── Reset ──────────────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
