@@ -1,23 +1,65 @@
 /**
  * gateway.js — Sennhaus
- *
- * The only JS on the site. Plays the gateway slide-out animation
- * before following the link, so the transition feels cinematic
- * rather than an instant page jump.
- *
- * If JS is disabled, the <a href> links work normally — no broken state.
  */
 
 document.querySelectorAll('.gateway-side').forEach(side => {
-    side.addEventListener('click', e => {
-        e.preventDefault();
-        const href = side.getAttribute('href');
+    const href = side.getAttribute('href');
 
-        // Slide the gateway up, then navigate
-        const gateway = document.getElementById('gateway');
-        gateway.style.transition = 'transform 1.1s cubic-bezier(0.76, 0, 0.24, 1)';
-        gateway.style.transform  = 'translateY(-100%)';
-
-        setTimeout(() => { window.location.href = href; }, 900);
+    // 1. PRE-FLIGHT (Only if we aren't opening files directly from the computer)
+    side.addEventListener('mouseenter', () => {
+        if (window.location.protocol === 'file:') return; 
+        
+        if (!window.preloadedPages) window.preloadedPages = {};
+        if (!window.preloadedPages[href]) {
+            fetch(href)
+                .then(res => res.text())
+                .then(html => { window.preloadedPages[href] = html; })
+                .catch(() => {}); // Silently ignore preload errors
+        }
     });
+
+    // 2. THE TRANSITION
+    side.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        // FALLBACK 1: Old browsers or Local File System (file://)
+        if (!document.startViewTransition || window.location.protocol === 'file:') {
+            window.location.href = href;
+            return;
+        }
+
+        try {
+            // Try to get the HTML
+            let htmlString = window.preloadedPages && window.preloadedPages[href];
+            if (!htmlString) {
+                const response = await fetch(href);
+                if (!response.ok) throw new Error('Fetch failed');
+                htmlString = await response.text();
+            }
+
+            const parser = new DOMParser();
+            const newDoc = parser.parseFromString(htmlString, 'text/html');
+
+            // Trigger the cinematic View Transition API
+            document.startViewTransition(() => {
+                document.title = newDoc.title;
+                document.body.innerHTML = newDoc.body.innerHTML;
+                document.body.className = newDoc.body.className;
+                
+                // CRITICAL: Update the URL in the browser!
+                window.history.pushState({}, '', href);
+                
+                window.scrollTo(0, 0);
+            });
+            
+        } catch (error) {
+            // FALLBACK 2: If the fetch fails for ANY reason, jump normally.
+            window.location.href = href;
+        }
+    });
+});
+
+// Fix for hitting the "Back" button in the browser
+window.addEventListener('popstate', () => {
+    window.location.reload();
 });

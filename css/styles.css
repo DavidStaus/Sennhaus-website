@@ -107,8 +107,10 @@ h3 {
     align-items: center;
     overflow: hidden;
     text-decoration: none;
-    transition: flex 0.6s var(--ease-cinematic);
+    /* Snappier transition right here: */
+    transition: flex 0.4s cubic-bezier(0.2, 1, 0.3, 1);
 }
+
 
 .gateway-side:hover { flex: 1.65; }
 
@@ -118,7 +120,9 @@ h3 {
     background-size: cover;
     background-position: center;
     filter: brightness(0.35) grayscale(100%);
-    transition: transform 0.6s var(--ease-cinematic), filter 2s cubic-bezier(0.9, 0, 0.1, 1);
+    /* Both are exactly 0.4s now! */
+    transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), 
+                filter 0.4s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .gateway-side:hover .gate-bg {
@@ -410,4 +414,34 @@ footer {
 @media (max-width: 600px) {
     .masonry { columns: 1; }
     .gate-content h2 { font-size: 2.5rem; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   VIEW TRANSITIONS API (Cinematic Cross-fade)
+═══════════════════════════════════════════════════════════ */
+
+/* Enable cross-document transitions natively for future browsers */
+@view-transition {
+    navigation: auto;
+}
+
+/* The page that is leaving (scales down slightly and fades into the dark) */
+::view-transition-old(root) {
+    animation: exitPage 0.4s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+/* The page that is entering (scales in and fades up) */
+::view-transition-new(root) {
+    animation: enterPage 0.4s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+@keyframes exitPage {
+    from { opacity: 1; transform: scale(1); }
+    to   { opacity: 0; transform: scale(0.97); }
+}
+
+@keyframes enterPage {
+    from { opacity: 0; transform: scale(1.03); }
+    to   { opacity: 1; transform: scale(1); }
 }
