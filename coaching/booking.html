@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply & Book Coaching — Sennhaus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="coaching">
+
+    <nav aria-label="Main navigation">
+        <a class="nav-logo" href="../index.html">SENNHAUS</a>
+        <ul class="nav-links" role="list">
+            <li><a href="training.html">Training</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="booking.html" aria-current="page">Apply & Book</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../photography/portfolio.html" class="nav-switch">Photography →</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Work With Me</h1>
+
+        <div class="grid-2">
+            <div>
+                <p class="intro">Whether you are applying for the Weekly Workout, preparing for drama school, or need a sharp eye for an upcoming self-tape, let's get to work. I'll get back to you within 48 hours.</p>
+                <div class="card" style="border-color: var(--accent);">
+                    <h3>Vesterbro Studio</h3>
+                    <p class="card-body">All coaching and self-tapes take place in my private studio in Copenhagen. It is a closed, secure environment designed entirely for actors to risk failing safely.</p>
+                </div>
+            </div>
+
+            <form class="booking-form" action="#" method="post" novalidate>
+                <label class="form-label" for="name">Full Name</label>
+                <input id="name" type="text" name="name" placeholder="Mads Mikkelsen" autocomplete="name" required>
+
+                <label class="form-label" for="email">Email Address</label>
+                <input id="email" type="email" name="email" placeholder="mads@example.com" autocomplete="email" required>
+
+                <label class="form-label" for="service">What are you looking for?</label>
+                <select id="service" name="service">
+                    <option selected>Application: The Weekly Workout</option>
+                    <option>Booking: Private Coaching</option>
+                    <option>Booking: Self-Tape Session</option>
+                    <option>Prep: Drama School Auditions</option>
+                    <option>Other / General Inquiry</option>
+                </select>
+
+                <label class="form-label" for="background">Your Background & Goals</label>
+                <textarea id="background" name="background" placeholder="Tell me a bit about your acting background, or the specific audition/scene you need help with..." rows="5" required></textarea>
+
+                <button type="submit" class="submit-btn">Send Request</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <small>&copy; 2026 Sennhaus &mdash; David Senn &mdash; Vesterbro, Copenhagen</small>
+    </footer>
+
+</body>
+</html>
