@@ -9,13 +9,8 @@
     --warm-off-white: #F5F0E8;
     --brass:          #B8965A;
     --terracotta:     #B85C4A;
-    --text-muted:     0.7; /* Increased from 0.55 for WCAG Accessibility */
-
+    --text-muted:     0.7;
     --ease-cinematic: cubic-bezier(0.76, 0, 0.24, 1);
-    
-    --bg:     var(--dark);
-    --fg:     #F5F0E8;
-    --accent: var(--brass);
 }
 
 *:focus-visible {
@@ -23,11 +18,20 @@
     outline-offset: 4px;
 }
 
-/* VIBE: Intimate, velvety, and deeply creative */
+/* Coaching Theme */
 body.coaching {
-    --bg:     #2B2333; /* Lifted from black into a deep, warm velvet plum */
-    --fg:     #F4EEF7; /* Soft, luminous lavender-white */
-    --accent: #ae8cc7; /* Soft dusty lavender */
+    --bg:     #2B2333;
+    --fg:     #F4EEF7;
+    --accent: #ae8cc7;
+    background-color: var(--bg);
+}
+
+/* Photography Theme */
+body.photography {
+    --bg:     var(--dark);
+    --fg:     #F5F0E8;
+    --accent: var(--brass);
+    background-color: var(--bg);
 }
 
 /* ── Reset ──────────────────────────────────────────────── */
@@ -36,9 +40,10 @@ body.coaching {
 body {
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
-    background-color: var(--bg);
-    color: var(--fg);
+    background-color: #000; /* Start black for the gateway */
+    color: #F5F0E8;
     overflow-x: hidden;
+    transition: background-color 0.4s var(--ease-cinematic);
 }
 
 img { display: block; max-width: 100%; }
