@@ -390,10 +390,9 @@ nav {
    PAGE CONTENT
 ═══════════════════════════════════════════════════════════ */
 main {
-    padding: clamp(110px, 14vw, 190px) 5% 100px;
+    padding: clamp(40px, 6vw, 80px) 5% 100px; 
     max-width: 1300px;
     margin: 0 auto;
-    /* Restored and smoothed out the reveal animation */
     animation: contentReveal 0.6s var(--ease-cinematic) both; 
 }
 
