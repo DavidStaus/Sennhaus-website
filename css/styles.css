@@ -193,32 +193,57 @@ h3 {
     transform: translateX(-50%) scaleX(1); 
 }
 
-/* TRANSITION */
+/* ═══════════════════════════════════════════════════════════
+   TRANSITION
+═══════════════════════════════════════════════════════════ */
 body.gateway-exiting {
-    /* Locks the screen and prevents scrolling during transition */
     overflow: hidden; 
-    animation: gatewayExit 0.4s var(--ease-cinematic) forwards;
+    /* The body only handles the fade/blur now. Scaling is delegated to the panels. */
+    animation: gatewayFadeOut 0.4s var(--ease-cinematic) forwards;
 }
 
-/* When exiting, make the background of the chosen side dive forward */
-.gateway-side.is-selected .gate-bg {
-    transition: transform 0.8s ease-in; /* Longer, smooth zoom */
-    transform: scale(1.5) !important;   /* Large scale to feel like you're entering the photo */
-}
-
-@keyframes gatewayExit {
+@keyframes gatewayFadeOut {
     from { 
         opacity: 1; 
-        transform: scale(1); 
         filter: blur(0px);
     }
     to { 
         opacity: 0; 
-        transform: scale(1.1); /* Zooms the page "past" the viewer */
-        filter: blur(4px);     /* Optional: adds a motion-blur feel */
+        filter: blur(4px);
     }
 }
 
+/* Prevent interacting with the form during exit */
+body.gateway-exiting #gateway {
+    pointer-events: none;
+}
+
+/* ── 1. SELECTED SIDE: Dives Forward ── */
+.gateway-side.is-selected .gate-bg {
+    /* Changed to ease-out so the movement is snappy right as the click happens */
+    transition: transform 0.8s ease-out !important;
+    transform: scale(1.5) !important;   
+}
+
+.gateway-side.is-selected .gate-content {
+    transition: transform 0.8s ease-out;
+    transform: scale(1.05); /* Slight push forward on text for immersion */
+}
+
+/* ── 2. UNSELECTED SIDE: Recedes / Zooms Out ── */
+body.gateway-exiting .gateway-side:not(.is-selected) .gate-bg {
+    transition: transform 0.8s ease-out, filter 0.8s ease-out !important;
+    transform: scale(0.85) !important; /* Pulls backward */
+    filter: brightness(0.1) grayscale(100%) !important; /* Dims faster */
+}
+
+body.gateway-exiting .gateway-side:not(.is-selected) .gate-content {
+    transition: transform 0.8s ease-out, opacity 0.3s ease-out;
+    transform: scale(0.9);
+    opacity: 0; /* Text fades out immediately */
+}
+
+/* ── Entry / Exit Resets ── */
 @keyframes gatewayEnter {
     from { opacity: 0; transform: scale(0.97); }
     to   { opacity: 1; transform: scale(1); }
@@ -226,22 +251,13 @@ body.gateway-exiting {
 
 body.site-exiting {
     overflow: hidden;
-    /* Site scales UP and fades out, feeling like you are pulling backwards */
     animation: siteExitReverse 0.4s var(--ease-cinematic) forwards;
-}
-
-/* Add this to ensure the exit animation looks intentional */
-body.gateway-exiting #gateway {
-    pointer-events: none;
-    transition: opacity 0.35s var(--ease-cinematic);
-    opacity: 0; 
 }
 
 @keyframes siteExitReverse {
     from { opacity: 1; transform: scale(1); }
     to   { opacity: 0; transform: scale(1.03); }
 }
-
 
 /* ═══════════════════════════════════════════════════════════
    NAVIGATION

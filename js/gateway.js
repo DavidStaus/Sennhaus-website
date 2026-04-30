@@ -25,8 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('pageshow', (event) => {
-    if (event.persisted) {
-        document.body.classList.remove('gateway-exiting');
-        document.body.style.backgroundColor = ''; 
-    }
+    // Reset body classes
+    document.body.classList.remove('gateway-exiting', 'exit-to-photo', 'exit-to-coach');
+    
+    // Reset the panels
+    const gatewayLinks = document.querySelectorAll('.gateway-side');
+    gatewayLinks.forEach(link => {
+        link.classList.remove('is-selected');
+    });
+
+    // Reset inline styles if any were applied by previous JS
+    document.body.style.backgroundColor = ''; 
 });
