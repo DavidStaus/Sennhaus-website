@@ -233,9 +233,11 @@ nav {
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
-    transition: opacity 0.25s;
+    transition: filter 0.2s;
 }
-.nav-logo:hover { opacity: 0.65; }
+.nav-logo:hover { 
+	filter: brightness(1.25); 
+}
 
 .nav-links {
     display: flex;
@@ -468,20 +470,37 @@ input:focus, select:focus, textarea:focus {
 textarea { resize: vertical; min-height: 130px; }
 
 .submit-btn {
+    position: relative;
     background: var(--accent);
-    color: #fff;
-    border: none;
+    color: var(--bg); /* WCAG fix: Dark text on accent background */
+    border: 1px solid var(--accent);
     padding: 1.1rem 2.5rem;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.75rem; /* Bumped slightly for legibility */
+    font-weight: 550; /* Added weight so the dark text pops */
     text-transform: uppercase;
     letter-spacing: 3px;
     cursor: pointer;
     align-self: flex-start;
-    transition: opacity 0.25s, transform 0.2s;
+    overflow: hidden; /* Contains pseudo-elements if used */
 }
-.submit-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-.submit-btn:active { transform: translateY(0); }
+
+.submit-btn {
+    transition: background-color 0.3s var(--ease-cinematic), 
+                color 0.3s var(--ease-cinematic), 
+                transform 0.1s ease-out;
+		transition: filter 0.2s;
+}
+
+.submit-btn:hover {
+    filter: brightness(1.25);
+
+}
+
+/* A subtle scale-down on click feels tactile and snappy */
+.submit-btn:active {
+    transform: scale(0.98);
+}
 
 
 /* ═══════════════════════════════════════════════════════════
