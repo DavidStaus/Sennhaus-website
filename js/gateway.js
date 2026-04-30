@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault(); 
             const targetUrl = this.href;
 
+            this.classList.add('is-selected');
+
             // Change background color instantly to match the destination
             if (this.classList.contains('coach-side')) {
                 document.body.style.backgroundColor = '#2B2333';

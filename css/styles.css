@@ -120,7 +120,10 @@ h3 {
 }
 
 
-.gateway-side:hover { flex: 1.65; }
+.gateway-side:hover, 
+.gateway-side.is-selected { 
+    flex: 1.65; 
+}
 
 .gate-bg {
     position: absolute;
@@ -133,7 +136,8 @@ h3 {
                 filter 0.4s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.gateway-side:hover .gate-bg {
+.gateway-side:hover .gate-bg,
+.gateway-side.is-selected .gate-bg {
     transform: scale(1.08);
     filter: brightness(0.55) grayscale(0%);
 }
@@ -183,7 +187,11 @@ h3 {
     transition: transform 0.3s var(--ease-cinematic) 0.1s;
     z-index: 3;
 }
-.gateway-side:hover::after { transform: translateX(-50%) scaleX(1); }
+
+.gateway-side:hover::after,
+.gateway-side.is-selected::after { 
+    transform: translateX(-50%) scaleX(1); 
+}
 
 /* TRANSITION */
 body.gateway-exiting {
@@ -192,9 +200,23 @@ body.gateway-exiting {
     animation: gatewayExit 0.4s var(--ease-cinematic) forwards;
 }
 
+/* When exiting, make the background of the chosen side dive forward */
+.gateway-side.is-selected .gate-bg {
+    transition: transform 0.8s ease-in; /* Longer, smooth zoom */
+    transform: scale(1.5) !important;   /* Large scale to feel like you're entering the photo */
+}
+
 @keyframes gatewayExit {
-    from { opacity: 1; transform: scale(1); }
-    to   { opacity: 0; transform: scale(0.97); }
+    from { 
+        opacity: 1; 
+        transform: scale(1); 
+        filter: blur(0px);
+    }
+    to { 
+        opacity: 0; 
+        transform: scale(1.1); /* Zooms the page "past" the viewer */
+        filter: blur(4px);     /* Optional: adds a motion-blur feel */
+    }
 }
 
 @keyframes gatewayEnter {
