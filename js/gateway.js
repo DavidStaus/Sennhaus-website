@@ -2,25 +2,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const gatewayLinks = document.querySelectorAll('.gateway-side');
 
     gatewayLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault(); 
-            const targetUrl = this.href;
+		// Replace the internal logic of your click listener in gateway.js
+		link.addEventListener('click', function(e) {
+			e.preventDefault(); 
+			const targetUrl = this.href;
 
-            this.classList.add('is-selected');
+			// Add selected class to the one clicked
+			this.classList.add('is-selected');
+			
+			// Add a class to the parent/body to signal we are transitioning
+			document.body.classList.add('gateway-exiting');
 
-            // Change background color instantly to match the destination
-            if (this.classList.contains('coach-side')) {
-                document.body.style.backgroundColor = '#2B2333';
-            } else {
-                document.body.style.backgroundColor = '#0d2119';
-            }
+			// Change background color instantly to match the destination 
+			// (This prevents a flash of black during the redirect)
+			if (this.classList.contains('coach-side')) {
+				document.body.style.backgroundColor = '#2B2333';
+			} else {
+				document.body.style.backgroundColor = '#0d2119';
+			}
 
-            document.body.classList.add('gateway-exiting');
-
-            setTimeout(() => {
-                window.location.href = targetUrl;
-            }, 350); 
-        });
+			setTimeout(() => {
+				window.location.href = targetUrl;
+			}, 550); // Increased slightly for a smoother "sweep"
+		});
     });
 });
 
