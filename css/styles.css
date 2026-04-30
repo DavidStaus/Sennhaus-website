@@ -76,7 +76,7 @@ h3 {
     display: flex;
     height: 100dvh;
     width: 100%;
-    background: #000;
+    background: transparent;
     position: relative;
     animation: gatewayEnter 0.6s var(--ease-cinematic) both;
 }
@@ -201,6 +201,13 @@ body.site-exiting {
     overflow: hidden;
     /* Site scales UP and fades out, feeling like you are pulling backwards */
     animation: siteExitReverse 0.4s var(--ease-cinematic) forwards;
+}
+
+/* Add this to ensure the exit animation looks intentional */
+body.gateway-exiting #gateway {
+    pointer-events: none;
+    transition: opacity 0.35s var(--ease-cinematic);
+    opacity: 0; 
 }
 
 @keyframes siteExitReverse {
