@@ -7,7 +7,7 @@
 :root {
     --dark:           #0d2119;
     --warm-off-white: #F5F0E8;
-    --brass:          #B8965A;
+    --brass:          #d4ad68;
     --terracotta:     #B85C4A;
     --text-muted:     0.7;
     --ease-cinematic: cubic-bezier(0.76, 0, 0.24, 1);
@@ -22,7 +22,7 @@
 body.coaching {
     --bg:     #2B2333;
     --fg:     #F4EEF7;
-    --accent: #ae8cc7;
+    --accent: #daaff9;
     background-color: var(--bg);
 }
 
@@ -251,7 +251,7 @@ nav {
     transition: filter 0.2s;
 }
 .nav-logo:hover { 
-	filter: brightness(1.25); 
+	filter: brightness(1.15); 
 }
 
 .nav-links {
@@ -334,7 +334,8 @@ nav {
     transform-origin: center; 
     /* Synchronized Return (Mouse Leave) */
     transition: color 0.5s var(--ease-cinematic),
-                transform 0.5s var(--ease-cinematic) !important;
+                transform 0.5s var(--ease-cinematic) !important,
+				brightness 0.5s var(--ease-cinematic);
 
     /* Improves sub-pixel rendering during scaling */
     backface-visibility: hidden;
@@ -363,6 +364,7 @@ nav {
 
 .nav-links a.nav-switch:hover {
     color: var(--bg) !important; 
+	filter: brightness(1.15);
     
     /* 4. Reduced scale (1.015) for a more subtle premium feel */
     transform: scale(1.015); 
@@ -542,7 +544,7 @@ textarea { resize: vertical; min-height: 130px; }
 }
 
 .submit-btn:hover {
-    filter: brightness(1.25);
+    filter: brightness(1.15);
     transform: scale(1.02);
     
     transition: background-color 0.3s var(--ease-cinematic), 
