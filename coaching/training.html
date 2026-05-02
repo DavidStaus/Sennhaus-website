@@ -9,48 +9,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <style>
-        /* Critical CSS: Sets theme variables before main CSS loads */
-        :root {
-            --bg: #2B2333;
-            --fg: #F4EEF7;
-            --accent: #ae8cc7;
-        }
-    body { background-color: var(--bg); }
+        :root { --bg: #2B2333; --fg: #F4EEF7; --accent: #ae8cc7; }
+        body { background-color: var(--bg); }
     </style>
-    <script src="../js/site.js"></script>
+    <script src="../js/site.js" defer></script>
 </head>
 <body class="coaching">
 
-<nav aria-label="Main navigation">
+    <nav aria-label="Main navigation">
         <a class="nav-logo" href="../index.html">SENNHAUS</a>
         <ul class="nav-links" role="list">
             <li><a href="training.html" aria-current="page">Training</a></li>
             <li><a href="testimonials.html">Testimonials</a></li>
-            <li><a href="booking.html">Apply & Book</a></li>
+            <li><a href="booking.html">Apply &amp; Book</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="../photography/portfolio.html" class="nav-switch">Photography →</a></li>
         </ul>
     </nav>
 
     <main>
-        <h1>Training & Classes</h1>
+        <h1>Training &amp; Classes</h1>
         <p class="intro">Training is the difference between an audition that 'goes well' and one that 'books.' I provide a safe, rigorous space to strip away habit and find the visceral truth of the text.</p>
 
-        <!-- NEW: Weekly Class Highlight (Primary Goal) -->
-        <div class="card" style="margin-bottom: 4rem; border-color: var(--accent);">
+        <div class="card card--featured">
             <h3>The Weekly Workout</h3>
             <p class="card-body">A recurring weekly ensemble class designed to keep your instrument sharp. We focus on scene study, active listening, and dropping into the body. Limited to 12 actors per semester.</p>
-            <ul class="feature-list" style="margin-bottom: 1.5rem;">
-                <li>Tuesdays, 18:30 - 21:30</li>
+            <ul class="feature-list">
+                <li>Tuesdays, 18:30 – 21:30</li>
                 <li>Vesterbro Studio, Copenhagen</li>
             </ul>
             <span class="price-tag">1.800 DKK / Month</span>
-            <br>
-            <!-- A placeholder link for a booking/contact form -->
-            <a href="booking.html" class="submit-btn" style="display: inline-block; text-decoration: none; margin-top: 1rem;">Apply for Next Semester</a>
+            <a href="booking.html" class="submit-btn">Apply for Next Semester</a>
         </div>
 
-        <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 1.5rem;">Acting Coaching</h2>
+        <h2>Acting Coaching</h2>
         <div class="grid-2">
             <div class="card">
                 <h3>Audition Technique</h3>
@@ -64,3 +56,10 @@
             </div>
         </div>
     </main>
+
+    <footer>
+        <small>&copy; 2026 Sennhaus &mdash; David Senn &mdash; Vesterbro, Copenhagen</small>
+    </footer>
+
+</body>
+</html>

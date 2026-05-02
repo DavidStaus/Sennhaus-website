@@ -1,28 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Target the main SENNHAUS logo link
     const logoLink = document.querySelector('.nav-logo');
 
     if (logoLink) {
         logoLink.addEventListener('click', function(e) {
-            // Only trigger the animation if the link goes to the index/gateway
-            if (this.getAttribute('href').includes('index.html')) {
-                e.preventDefault(); 
-                
-                const targetUrl = this.href;
+            const url = new URL(this.href, location.href);
+            const isGateway = url.pathname.endsWith('index.html') || url.pathname.endsWith('/');
 
-                // Trigger the reverse CSS exit animation
+            if (isGateway) {
+                e.preventDefault();
                 document.body.classList.add('site-exiting');
-
-                // Wait for the animation to finish, then go to the gateway
-                setTimeout(() => {
-                    window.location.href = targetUrl;
-                }, 350); 
+                setTimeout(() => { window.location.href = this.href; }, 350);
             }
         });
     }
 });
 
-/* Safari/Firefox BFCache Fix */
+// BFCache: prevent stale exit-animation class when navigating back
 window.addEventListener('pageshow', (event) => {
     if (event.persisted) {
         document.body.classList.remove('site-exiting');

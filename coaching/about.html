@@ -9,14 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <style>
-        /* Critical CSS: Sets theme variables before main CSS loads */
-        :root {
-            --bg: #2B2333;
-            --fg: #F4EEF7;
-            --accent: #ae8cc7;
-        }
-    body { background-color: var(--bg); }
+        :root { --bg: #2B2333; --fg: #F4EEF7; --accent: #ae8cc7; }
+        body { background-color: var(--bg); }
     </style>
+    <script src="../js/site.js" defer></script>
 </head>
 <body class="coaching">
 
@@ -25,7 +21,7 @@
         <ul class="nav-links" role="list">
             <li><a href="training.html">Training</a></li>
             <li><a href="testimonials.html">Testimonials</a></li>
-            <li><a href="booking.html">Apply & Book</a></li>
+            <li><a href="booking.html">Apply &amp; Book</a></li>
             <li><a href="about.html" aria-current="page">About</a></li>
             <li><a href="../photography/portfolio.html" class="nav-switch">Photography →</a></li>
         </ul>
@@ -37,10 +33,9 @@
 
         <div class="grid-2">
             <div>
-                <!-- Replace with your own portrait -->
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" alt="David Senn in his Copenhagen studio" style="width: 100%; filter: grayscale(100%);">
+                <img class="about-portrait" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" alt="David Senn in his Copenhagen studio" width="800">
             </div>
-            <div style="display: flex; flex-direction: column; gap: 2rem;">
+            <div class="about-text">
                 <div>
                     <h3>The Coach</h3>
                     <p class="card-body">I trained at [Insert Acting School/Background] and have spent the last [X] years helping actors bridge the gap between their instincts and the text. Trust is everything in this work. I believe that an actor's greatest asset is their own specific, unfiltered humanity.</p>

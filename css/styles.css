@@ -5,12 +5,35 @@
 
 /* ── Design tokens ──────────────────────────────────────── */
 :root {
-    --dark:           #0d2119;
-    --warm-off-white: #F5F0E8;
-    --brass:          #d4ad68;
-    --terracotta:     #B85C4A;
+    /* Gateway / Default theme */
+    --bg:             #000000;
+    --fg:             #F5F0E8;
+    --accent:         #d4ad68;
+    
     --text-muted:     0.7;
     --ease-cinematic: cubic-bezier(0.76, 0, 0.24, 1);
+    --ease-spring:    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Photography theme */
+body.photography {
+    --bg:     #0d2119;
+    --fg:     #F5F0E8;
+    --accent: #d4ad68;
+}
+
+/* Coaching theme */
+body.coaching {
+    --bg:     #2B2333;
+    --fg:     #F4EEF7;
+    --accent: #daaff9;
+}
+
+/* ── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
 }
 
 *:focus-visible {
@@ -18,35 +41,19 @@
     outline-offset: 4px;
 }
 
-/* Coaching Theme */
-body.coaching {
-    --bg:     #2B2333;
-    --fg:     #F4EEF7;
-    --accent: #daaff9;
-    background-color: var(--bg);
-}
-
-/* Photography Theme */
-body.photography {
-    --bg:     var(--dark);
-    --fg:     #F5F0E8;
-    --accent: var(--brass);
-    background-color: var(--bg);
-}
-
-/* ── Reset ──────────────────────────────────────────────── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
 body {
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
-    background-color: #000; /* Start black for the gateway */
-    color: #F5F0E8;
+    background-color: var(--bg);
+    color: var(--fg);
     overflow-x: hidden;
     transition: background-color 0.4s var(--ease-cinematic);
 }
 
-img { display: block; max-width: 100%; }
+img { 
+    display: block; 
+    max-width: 100%; 
+}
 
 /* ── Typography ─────────────────────────────────────────── */
 h1 {
@@ -55,6 +62,14 @@ h1 {
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.2;
     margin-bottom: 1.5rem;
 }
 
@@ -80,16 +95,15 @@ h3 {
     display: flex;
     height: 100dvh;
     width: 100vw;
-    background: #000;
+    background: var(--bg);
     position: relative;
     overflow: hidden;
     animation: gatewayEnter 0.8s var(--ease-cinematic) both;
 }
 
-/* Original Brand Styling */
 .gateway-brand {
     position: absolute;
-    top: 3.5rem; 
+    top: 3.5rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
@@ -108,8 +122,8 @@ h3 {
     transition: opacity 0.4s ease;
 }
 
-body.gateway-exiting .gateway-brand span {
-    opacity: 0;
+body.gateway-exiting .gateway-brand span { 
+    opacity: 0; 
 }
 
 .gateway-side {
@@ -121,8 +135,7 @@ body.gateway-exiting .gateway-brand span {
     align-items: center;
     overflow: hidden;
     text-decoration: none;
-    /* RESTORED: Snappy 0.6s timing for the lateral takeover */
-    transition: flex 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+    transition: flex 0.6s var(--ease-cinematic);
     z-index: 1;
 }
 
@@ -134,7 +147,7 @@ body.gateway-exiting .gateway-brand span {
 body.gateway-exiting .gateway-side:not(.is-selected) {
     flex: 0;
     opacity: 0;
-    transition: flex 0.6s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.3s ease;
+    transition: flex 0.6s var(--ease-cinematic), opacity 0.3s ease;
 }
 
 .gate-bg {
@@ -145,8 +158,7 @@ body.gateway-exiting .gateway-side:not(.is-selected) {
     background-size: cover;
     background-position: center;
     filter: brightness(0.35) grayscale(100%);
-    /* Background zooms for a slightly longer, smoother duration for parallax */
-    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), 
+    transition: transform 0.8s var(--ease-spring),
                 filter 0.6s ease;
 }
 
@@ -167,7 +179,6 @@ body.gateway-exiting .gateway-side:not(.is-selected) {
     pointer-events: none;
 }
 
-/* Small text still fades out quickly to reduce clutter */
 .gate-content p {
     font-size: 0.6rem;
     text-transform: uppercase;
@@ -177,52 +188,20 @@ body.gateway-exiting .gateway-side:not(.is-selected) {
     transition: opacity 0.3s ease;
 }
 
-body.gateway-exiting .gate-content p {
-    opacity: 0;
+body.gateway-exiting .gate-content p { 
+    opacity: 0; 
 }
 
-/* H2 syncs with the background's smooth zoom */
 .gate-content h2 {
-    font-family: 'Playfair Display', serif;
     font-size: clamp(2.2rem, 5vw, 3.5rem);
-    font-weight: 400;
-    /* NOTE: NO opacity transition here. This is the key fix. */
-    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    margin-bottom: 0; /* Reset the global h2 margin inside the gateway */
+    transition: transform 0.8s var(--ease-spring);
     transform-origin: center;
 }
 
 .gateway-side:hover .gate-content h2,
 .gateway-side.is-selected .gate-content h2 {
-    transform: scale(1.08); /* Expands slightly more than the BG for depth */
-}
-
-/* ═══════════════════════════════════════════════════════════
-   TRANSITION & ANIMATIONS
-═══════════════════════════════════════════════════════════ */
-
-body.gateway-exiting {
-    overflow: hidden;
-    /* RESTORED: Snappy 0.6s master fade animation */
-    animation: gatewayFadeOut 0.6s cubic-bezier(0.76, 0, 0.24, 1) forwards;
-}
-
-@keyframes gatewayFadeOut {
-    0%   { opacity: 1; filter: brightness(1) blur(0px); }
-    100% { opacity: 0; filter: brightness(0.8) blur(4px); }
-}
-
-@keyframes gatewayEnter {
-    from { opacity: 0; transform: scale(1.02); }
-    to   { opacity: 1; transform: scale(1); }
-}
-
-body.site-exiting {
-    animation: siteExitReverse 0.4s ease forwards;
-}
-
-@keyframes siteExitReverse {
-    from { opacity: 1; }
-    to   { opacity: 0; }
+    transform: scale(1.08);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -236,7 +215,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-block: 1.25rem; 
+    padding-block: 1.25rem;
     padding-inline: calc((100% - 1300px) / 2 + 5%);
 }
 
@@ -250,9 +229,7 @@ nav {
     text-decoration: none;
     transition: filter 0.2s;
 }
-.nav-logo:hover { 
-	filter: brightness(1.15); 
-}
+.nav-logo:hover { filter: brightness(1.15); }
 
 .nav-links {
     display: flex;
@@ -262,22 +239,20 @@ nav {
 }
 
 .nav-links a {
-    position: relative; /* Required for the animated underline */
+    position: relative;
     text-decoration: none;
     color: var(--fg);
-    font-size: 0.85rem; /* Increased to ~13.6px. Combined with uppercase, this is readable and accessible */
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    opacity: 0.75; /* Passes WCAG AA contrast requirements */
+    opacity: 0.75;
     transition: opacity 0.2s;
-    padding-bottom: 4px; /* Space for the hover line */
+    padding-bottom: 4px;
 }
 
-.nav-links a:hover { 
-    opacity: 1; 
-}
+.nav-links a:hover { opacity: 1; }
 
-/* Premium animated hover underline (ignores the switch button) */
+/* Animated underline — excluded from the switch button */
 .nav-links a:not(.nav-switch)::after {
     content: '';
     position: absolute;
@@ -296,121 +271,77 @@ nav {
     transform-origin: left;
 }
 
-/* Active page styling */
 .nav-links a[aria-current="page"] {
     opacity: 1;
     color: var(--accent);
-    border-bottom: none; /* Removed old border to use the pseudo-element uniformly */
 }
 
 .nav-links a[aria-current="page"]::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
     background-color: var(--accent);
     transform: scaleX(1);
 }
 
-/* ── Nav Switch ───────────────────────── */
+/* ── Nav switch button ──────────────────────────────────── */
 .nav-links a.nav-switch {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 185px; 
+    min-width: 185px;
     background: transparent;
-    color: var(--fg) !important;
-    border: 1px solid var(--accent) !important;
-    padding: 8px 18px !important;
+    color: var(--fg);
+    border: 1px solid var(--accent);
+    padding: 8px 18px;
     border-radius: 1px;
     font-style: italic;
-    overflow: hidden; 
+    opacity: 1; /* CTA: override the default 0.75 from .nav-links a */
+    overflow: hidden;
     z-index: 1;
-
-    /* 1. Uniform scaling from center */
-    transform-origin: center; 
-    /* Synchronized Return (Mouse Leave) */
+    transform-origin: center;
     transition: color 0.5s var(--ease-cinematic),
-                transform 0.5s var(--ease-cinematic) !important,
-				brightness 0.5s var(--ease-cinematic);
-
-    /* Improves sub-pixel rendering during scaling */
-    backface-visibility: hidden;
+                filter 0.5s var(--ease-cinematic),
+                transform 0.5s var(--ease-cinematic);
     -webkit-font-smoothing: antialiased;
 }
 
-/* The solid color block (The Sweep) */
+/* Sweep fill */
 .nav-links a.nav-switch::before {
     content: '';
     position: absolute;
-    /* 2. FIX: We over-extend the fill by 4px on every side to hide the BG bleed */
-    top: -4px; 
-    bottom: -4px; 
-    left: -4px; 
-    right: -4px; 
+    top: -4px;
+    bottom: -4px;
+    left: -4px;
+    right: -4px;
     background: var(--accent);
-    
-    /* 3. Ensure the sweep starts fully off-canvas and finishes past the edge */
     transform: scaleX(0);
     transform-origin: left;
-    
-    /* Synchronized with the parent duration */
     transition: transform 0.5s var(--ease-cinematic);
-    z-index: -1; 
+    z-index: -1;
 }
 
 .nav-links a.nav-switch:hover {
-    color: var(--bg) !important; 
-	filter: brightness(1.15);
-    
-    /* 4. Reduced scale (1.015) for a more subtle premium feel */
-    transform: scale(1.015); 
-    
-    /* Synchronized Entry (Mouse Enter) */
-    transition: transform 0.5s var(--ease-cinematic),
-                color 0.5s var(--ease-cinematic) !important;
+    color: var(--bg);
+    filter: brightness(1.15);
+    transform: scale(1.015);
 }
 
-.nav-links a.nav-switch:hover::before {
-    /* Scale slightly past 1 to ensure full coverage even at weird zoom levels */
-    transform: scaleX(1.1); 
-}
+.nav-links a.nav-switch:hover::before { transform: scaleX(1.1); }
 
 .nav-links a.nav-switch:active {
-    /* 5. The "Squish": Preserving the tactile feel from the submit button */
-    transform: scale(0.96) !important;
+    transform: scale(0.96);
     filter: brightness(0.9);
-    
-    /* Instant response to click */
-    transition: transform 0s !important;
+    transition: transform 0s;
 }
 
 /* ═══════════════════════════════════════════════════════════
    PAGE CONTENT
 ═══════════════════════════════════════════════════════════ */
 main {
-    padding: clamp(40px, 6vw, 80px) 5% 100px; 
+    padding: clamp(40px, 6vw, 80px) 5% 100px;
     max-width: 1300px;
     margin: 0 auto;
-    animation: contentReveal 0.6s var(--ease-cinematic) both; 
+    animation: contentReveal 0.6s var(--ease-cinematic) both;
 }
-
-@keyframes contentReveal {
-    from { 
-        opacity: 0; 
-        transform: scale(0.98); /* Slight scale-in feels more premium than sliding */
-	transform: translate(0, -0.5rem);
-    }
-    to { 
-        opacity: 1; 
-        transform: scale(1); 
-	transform: translate(0);
-    }
-}
-
 
 /* ── Grid ────────────────────────────────────────────────── */
 .grid-2 {
@@ -420,11 +351,16 @@ main {
     margin-bottom: 6rem;
 }
 
-/* ── Card ────────────────────────────────────────────────── */
+/* ── Cards ───────────────────────────────────────────────── */
 .card {
     padding: 3rem 2.5rem;
     border: 1px solid rgba(128,128,128,0.14);
     background: rgba(128,128,128,0.03);
+}
+
+.card--featured {
+    border-color: var(--accent);
+    margin-bottom: 4rem;
 }
 
 .card-body {
@@ -440,6 +376,7 @@ main {
     font-size: 1.5rem;
     color: var(--accent);
     margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .feature-list {
@@ -447,8 +384,22 @@ main {
     line-height: 2.2;
     opacity: var(--text-muted);
     font-size: 0.9rem;
+    margin-bottom: 1.5rem;
 }
 .feature-list li::before { content: '— '; opacity: 0.4; }
+
+/* ── About pages ─────────────────────────────────────────── */
+.about-portrait {
+    width: 100%;
+    display: block;
+    filter: grayscale(100%);
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 
 /* ── Portfolio masonry ──────────────────────────────────── */
 .masonry { columns: 2; column-gap: 18px; }
@@ -482,7 +433,6 @@ main {
     font-style: normal;
 }
 
-
 /* ═══════════════════════════════════════════════════════════
    BOOKING FORM
 ═══════════════════════════════════════════════════════════ */
@@ -510,58 +460,53 @@ input, select, textarea {
     appearance: none;
     transition: border-color 0.25s;
 }
+
 input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--accent);
 }
+
 textarea { resize: vertical; min-height: 130px; }
 
+/* Custom dropdown arrow to replace the removed native one */
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
 .submit-btn {
-    position: relative;
+    display: inline-block; /* Allows use as both <button> and <a> */
     background: var(--accent);
-    color: var(--bg); /* WCAG fix: Dark text on accent background */
+    color: var(--bg);
     border: 1px solid var(--accent);
     padding: 1.1rem 2.5rem;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.75rem; /* Bumped slightly for legibility */
-    font-weight: 550; /* Added weight so the dark text pops */
+    font-size: 0.75rem;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 3px;
+    text-decoration: none;
     cursor: pointer;
     align-self: flex-start;
-    overflow: hidden; /* Contains pseudo-elements if used */
-}
-
-
-.submit-btn {
-    /* Anchors the scaling to the left edge */
-    transform-origin: left center; 
-    
-    transition: background-color 0.3s var(--ease-cinematic), 
-                color 0.3s var(--ease-cinematic), 
-                filter 0.2s,
-                transform 0.3s ease-out; 
+    transform-origin: left center;
+    transition: filter 0.2s,
+                transform 0.3s ease-out;
 }
 
 .submit-btn:hover {
     filter: brightness(1.15);
     transform: scale(1.02);
-    
-    transition: background-color 0.3s var(--ease-cinematic), 
-                color 0.3s var(--ease-cinematic), 
-                filter 0.2s,
-                transform 0s; 
+    transition: filter 0.2s, transform 0s;
 }
 
 .submit-btn:active {
-    /* The "Press" state: Scale it down slightly smaller than normal (1.0) */
-    transform: scale(0.97); 
-    filter: brightness(0.9); /* Dims slightly to look "pushed in" */
-    
-    /* Instant response to the physical click */
-    transition: transform 0s; 
+    transform: scale(0.97);
+    filter: brightness(0.9);
+    transition: transform 0s;
 }
-
 
 /* ═══════════════════════════════════════════════════════════
    FOOTER
@@ -575,10 +520,51 @@ footer {
     opacity: 0.3;
 }
 
+/* ═══════════════════════════════════════════════════════════
+   TRANSITIONS & ANIMATIONS
+═══════════════════════════════════════════════════════════ */
+body.gateway-exiting {
+    overflow: hidden;
+    animation: gatewayFadeOut 0.6s var(--ease-cinematic) forwards;
+}
+
+body.site-exiting {
+    animation: siteExitReverse 0.4s ease forwards;
+}
+
+@keyframes gatewayEnter {
+    from { opacity: 0; transform: scale(1.02); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes gatewayFadeOut {
+    from { opacity: 1; filter: brightness(1) blur(0px); }
+    to   { opacity: 0; filter: brightness(0.8) blur(4px); }
+}
+
+@keyframes siteExitReverse {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+@keyframes contentReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.98) translateY(-0.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
 
 /* ═══════════════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1300px) {
+    nav { padding-inline: 5%; }
+}
+
 @media (max-width: 900px) {
     .grid-2 { grid-template-columns: 1fr; gap: 2.5rem; }
     .gateway-brand { display: none; }
@@ -588,10 +574,4 @@ footer {
 @media (max-width: 600px) {
     .masonry { columns: 1; }
     .gate-content h2 { font-size: 2.5rem; }
-}
-
-@media (max-width: 1300px) {
-    nav {
-        padding-inline: 5%;
-    }
 }

@@ -9,23 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <style>
-        /* Critical CSS: Sets theme variables before main CSS loads */
-        :root {
-            --bg: #2B2333;
-            --fg: #F4EEF7;
-            --accent: #ae8cc7;
-        }
-    body { background-color: var(--bg); }
+        :root { --bg: #2B2333; --fg: #F4EEF7; --accent: #ae8cc7; }
+        body { background-color: var(--bg); }
     </style>
+    <script src="../js/site.js" defer></script>
 </head>
 <body class="coaching">
 
-<nav aria-label="Main navigation">
+    <nav aria-label="Main navigation">
         <a class="nav-logo" href="../index.html">SENNHAUS</a>
         <ul class="nav-links" role="list">
             <li><a href="training.html">Training</a></li>
             <li><a href="testimonials.html" aria-current="page">Testimonials</a></li>
-            <li><a href="booking.html">Apply & Book</a></li>
+            <li><a href="booking.html">Apply &amp; Book</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="../photography/portfolio.html" class="nav-switch">Photography →</a></li>
         </ul>
@@ -38,11 +34,15 @@
         <div class="grid-2">
             <blockquote class="card testimonial">
                 <p class="testimonial-quote">The session changed how I approach every audition. David has a rare ability to strip away everything that isn't the truth.</p>
-                <cite class="testimonial-credit">Maja S. — Royal Danish Theatre</cite>
+                <footer class="testimonial-credit">
+                    <cite>Maja S.</cite> — Royal Danish Theatre
+                </footer>
             </blockquote>
             <blockquote class="card testimonial">
                 <p class="testimonial-quote">I booked my first international role three weeks after our self-tape session. The preparation was everything.</p>
-                <cite class="testimonial-credit">Erik H. — Series Regular, DR</cite>
+                <footer class="testimonial-credit">
+                    <cite>Erik H.</cite> — Series Regular, DR
+                </footer>
             </blockquote>
         </div>
     </main>
