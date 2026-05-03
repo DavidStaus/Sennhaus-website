@@ -225,6 +225,8 @@ body.gateway-exiting .gate-content p { opacity: 0; }
 
 /* ── NAV ── */
 nav {
+    position: sticky;
+    top: 0;
     width: 100%;
     background: var(--bg);
     border-bottom: 1px solid rgba(128,128,128,0.12);
@@ -234,6 +236,8 @@ nav {
     align-items: center;
     padding-block: 1.25rem;
     padding-inline: clamp(5%, calc((100% - 1300px) / 2 + 5%), 10%);
+    transform: translateY(0);
+    transition: transform 0.4s var(--ease-cinematic), background-color 0.4s var(--ease-cinematic);
 }
 
 .nav-logo {
@@ -533,7 +537,11 @@ body.site-exiting { animation: siteExitReverse 0.4s ease forwards; }
     }
 
     .nav-logo { z-index: 200; position: relative; }
-
+	
+	nav.nav-hidden {
+		transform: translateY(-100%);
+	}
+	
     /* Elegant offset-line hamburger menu */
     .menu-toggle {
         display: flex;
