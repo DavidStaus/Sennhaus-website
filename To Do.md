@@ -4,7 +4,7 @@ Issues that I have flagged myself:
 Nav bar currently a lot of redundant work since each side of the website has a different bar and it's hardcoded into every .html page, and multiple html pages with same name in different folders. Is there a way to simplify this and make it easier to make changes/additions later? Such as having the nav bar for photography in 1 place, and have the photography .html pages refer to it/fetch it?
 
 1. Forms need a backend. Both booking forms action="#" — they submit to nothing. The simplest path is Formspree or Netlify Forms (one attribute added, zero infrastructure). A confirmation message after submit is also missing.
-2. Mobile navigation. There's no hamburger/drawer for small screens. The nav-links list will overflow on mobile. A CSS-only disclosure pattern (<input type="checkbox"> + label) or a minimal JS toggle is needed.
+
 3. <head> is repeated verbatim across 9 files. If you ever change the font or add a favicon, you're editing 9 files. Consider a static site generator (Eleventy, Astro) or even a simple PHP/server-side include to share a <head> partial — the content doesn't require a framework.
 4. No favicon. Add one. It's a small trust signal and prevents a 404 on every page load.
 5. <meta name="description"> is missing on all pages. Critical for SEO and social sharing previews. Each page needs a unique, 120–155 character description.
