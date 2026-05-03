@@ -145,15 +145,37 @@ body.gateway-exiting .gateway-side:not(.is-selected) {
     height: 130%;
     background-size: cover;
     background-position: center;
-    filter: brightness(0.45) grayscale(50%);
+    /* Default mobile state */
+    filter: brightness(0.4) grayscale(60%);
     transition: transform 0.8s var(--ease-spring), filter 0.6s ease;
 }
 
 .photo-side .gate-bg { background-image: url('https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?auto=format&fit=crop&w=1600&q=80'); }
 .coach-side .gate-bg { background-image: url('https://images.unsplash.com/photo-1643651577200-d5438cd71eff?auto=format&fit=crop&w=1600&q=80'); }
 
+/* 1. Mobile & Touch Feedback ONLY */
+@media (hover: none) {
+    /* Tap target brightens slightly (0.4 -> 0.55) and regains full color */
+    .gateway-side:active .gate-bg,
+    .gateway-side.is-selected .gate-bg {
+        transform: scale(1.05);
+        filter: brightness(0.55) grayscale(0%);
+    }
+    .gateway-side:active .gate-content h2,
+    .gateway-side.is-selected .gate-content h2 {
+        transform: scale(1.08);
+    }
+    
+    /* Unselected option darkens by exactly 20% (0.4 -> 0.32) */
+    body.gateway-exiting .gateway-side:not(.is-selected) .gate-bg {
+        filter: brightness(0.32) grayscale(80%) !important;
+    }
+}
+
+/* 2. Desktop Hover Feedback (Restored to original design) */
 @media (hover: hover) {
     .gate-bg { filter: brightness(0.35) grayscale(100%); }
+    
     .gateway-side:hover .gate-bg,
     .gateway-side.is-selected .gate-bg {
         transform: scale(1.05);
@@ -163,6 +185,16 @@ body.gateway-exiting .gateway-side:not(.is-selected) {
     .gateway-side.is-selected .gate-content h2 {
         transform: scale(1.08);
     }
+    
+    body.gateway-exiting .gateway-side:not(.is-selected) .gate-bg {
+        filter: brightness(0.28) grayscale(100%) !important;
+    }
+}
+
+/* Global fade for the text of the unselected option */
+body.gateway-exiting .gateway-side:not(.is-selected) .gate-content {
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .gate-content {
@@ -563,6 +595,13 @@ body.site-exiting { animation: siteExitReverse 0.4s ease forwards; }
     }
 
     .nav-links.is-open a[aria-current="page"] { opacity: 1; }
+	
+	/* Tactile tap feedback for main mobile links */
+    .nav-links.is-open a:not(.nav-switch):active {
+        opacity: 1;
+        transform: scale(0.96); /* Physical push effect */
+        transition: opacity 0s, color 0s, transform 0.1s; /* 0s for instant response */
+    }
 
     /* Hide the desktop underline effect */
     .nav-links a:not(.nav-switch)::after { display: none; }
