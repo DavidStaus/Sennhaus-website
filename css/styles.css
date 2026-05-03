@@ -159,7 +159,7 @@ body.gateway-exiting .gateway-side:not(.is-selected) {
     .gateway-side:active .gate-bg,
     .gateway-side.is-selected .gate-bg {
         transform: scale(1.05);
-        filter: brightness(0.55) grayscale(0%);
+        filter: brightness(0.8) grayscale(0%);
     }
     .gateway-side:active .gate-content h2,
     .gateway-side.is-selected .gate-content h2 {
