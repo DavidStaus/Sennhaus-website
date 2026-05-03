@@ -4,9 +4,6 @@ Issues that I have flagged myself:
 Nav bar currently a lot of redundant work since each side of the website has a different bar and it's hardcoded into every .html page, and multiple html pages with same name in different folders. Is there a way to simplify this and make it easier to make changes/additions later? Such as having the nav bar for photography in 1 place, and have the photography .html pages refer to it/fetch it?
 
 1. Forms need a backend. Both booking forms action="#" — they submit to nothing. The simplest path is Formspree or Netlify Forms (one attribute added, zero infrastructure). A confirmation message after submit is also missing.
-
-3. <head> is repeated verbatim across 9 files. If you ever change the font or add a favicon, you're editing 9 files. Consider a static site generator (Eleventy, Astro) or even a simple PHP/server-side include to share a <head> partial — the content doesn't require a framework.
-4. No favicon. Add one. It's a small trust signal and prevents a 404 on every page load.
-5. <meta name="description"> is missing on all pages. Critical for SEO and social sharing previews. Each page needs a unique, 120–155 character description.
-6. The portfolio has four images. A real casting director will expect more range. Consider a lightbox for full-size viewing and enough images to show variety across gender, age, and mood — without adding page weight (lazy loading is already in place, which is good).
-
+2. <head> is repeated verbatim across 9 files. If you ever change the font or add a favicon, you're editing 9 files. Consider a static site generator (Eleventy, Astro) or even a simple PHP/server-side include to share a <head> partial — the content doesn't require a framework.
+3. <meta name="description"> is missing on all pages. Critical for SEO and social sharing previews. Each page needs a unique, 120–155 character description.
+4. The portfolio has four images. A real casting director will expect more range. Consider a lightbox for full-size viewing and enough images to show variety across gender, age, and mood — without adding page weight (lazy loading is already in place, which is good).
