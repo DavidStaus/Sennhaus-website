@@ -414,14 +414,13 @@ main {
 }
 .feature-list li::before { content: '— '; opacity: 0.4; }
 
-.about-portrait { width: 100%; display: block; filter: grayscale(100%); }
+.about-portrait { width: 100%; display: block; }
 .about-text { display: flex; flex-direction: column; gap: 2rem; }
 
 .masonry { columns: 2; column-gap: 18px; }
 .masonry img {
     width: 100%;
     margin-bottom: 18px;
-    filter: grayscale(100%);
     transition: filter 0.9s var(--ease-cinematic);
 }
 @media (hover: hover) { .masonry img:hover { filter: grayscale(0%); } }
