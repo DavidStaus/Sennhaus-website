@@ -323,6 +323,11 @@ nav {
     color: var(--bg);
     filter: brightness(1.15);
     transform: scale(1.015);
+    
+    /* Delay the filter transition by 0.25s to wait for the sweep fill */
+    transition: color 0.5s var(--ease-cinematic),
+                filter 0.5s var(--ease-cinematic) 0.25s,
+                transform 0.5s var(--ease-cinematic);
 }
 
 .nav-links a.nav-switch:hover::before { transform: scaleX(1.1); }
