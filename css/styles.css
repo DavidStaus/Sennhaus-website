@@ -244,10 +244,25 @@ nav {
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
-    transition: filter 0.2s;
     padding-block: 0.5rem;
+    display: inline-block; 
+    transform-origin: left center; 
+    transition: filter 0.2s, transform 0.3s ease-out, opacity 0.3s ease-out;
 }
-.nav-logo:hover { filter: brightness(1.15); }
+
+@media (hover: hover) {
+    .nav-logo:hover { 
+        filter: brightness(1.15); 
+    }
+}
+
+/* ── Tactile Mobile Feedback ── */
+.nav-logo:active {
+    transform: scale(0.95);
+    opacity: 1;
+	filter: brightness(1.15);
+    transition: transform 0s, opacity 0s, filter 0s; 
+}
 
 .nav-links {
     display: flex;
