@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2B2333">
     <title>Acting Training — Sennhaus</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
-    <style>
-        :root { --bg: #2B2333; --fg: #F4EEF7; --accent: #ae8cc7; }
-        body { background-color: var(--bg); }
-    </style>
     <script src="../js/site.js" defer></script>
 </head>
 <body class="coaching">
-
     <nav aria-label="Main navigation">
         <a class="nav-logo" href="../index.html">SENNHAUS</a>
+		
+		<button class="menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+        </button>
+		
         <ul class="nav-links" role="list">
             <li><a href="training.html" aria-current="page">Training</a></li>
             <li><a href="testimonials.html">Testimonials</a></li>
@@ -26,11 +28,9 @@
             <li><a href="../photography/portfolio.html" class="nav-switch">Photography →</a></li>
         </ul>
     </nav>
-
     <main>
         <h1>Training &amp; Classes</h1>
         <p class="intro">Training is the difference between an audition that 'goes well' and one that 'books.' I provide a safe, rigorous space to strip away habit and find the visceral truth of the text.</p>
-
         <div class="card card--featured">
             <h3>The Weekly Workout</h3>
             <p class="card-body">A recurring weekly ensemble class designed to keep your instrument sharp. We focus on scene study, active listening, and dropping into the body. Limited to 12 actors per semester.</p>
@@ -41,7 +41,6 @@
             <span class="price-tag">1.800 DKK / Month</span>
             <a href="booking.html" class="submit-btn">Apply for Next Semester</a>
         </div>
-
         <h2>Acting Coaching</h2>
         <div class="grid-2">
             <div class="card">
@@ -56,10 +55,6 @@
             </div>
         </div>
     </main>
-
-    <footer>
-        <small>&copy; 2026 Sennhaus &mdash; David Senn &mdash; Vesterbro, Copenhagen</small>
-    </footer>
-
+    <footer><small>&copy; 2026 Sennhaus &mdash; David Senn &mdash; Vesterbro, Copenhagen</small></footer>
 </body>
 </html>

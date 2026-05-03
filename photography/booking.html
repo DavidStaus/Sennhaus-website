@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d2119">
     <title>Book a Photography Session — Sennhaus</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,9 +12,14 @@
     <script src="../js/site.js" defer></script>
 </head>
 <body class="photography">
-
     <nav aria-label="Main navigation">
         <a class="nav-logo" href="../index.html">SENNHAUS</a>
+		
+		<button class="menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+        </button>
+		
         <ul class="nav-links" role="list">
             <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="booking.html" aria-current="page">Book Session</a></li>
@@ -21,10 +27,8 @@
             <li><a href="../coaching/training.html" class="nav-switch">Acting Coaching →</a></li>
         </ul>
     </nav>
-
     <main>
         <h1>Book a Session</h1>
-
         <div class="grid-2">
             <div>
                 <p class="intro">Select your package below. I will contact you within 24 hours to finalize the date, discuss wardrobe, and answer any questions.</p>
@@ -39,32 +43,23 @@
                     </ul>
                 </div>
             </div>
-
             <form class="booking-form" action="#" method="post">
                 <label class="form-label" for="name">Full Name</label>
                 <input id="name" type="text" name="name" placeholder="Anna Lindqvist" autocomplete="name" required>
-
                 <label class="form-label" for="email">Email Address</label>
                 <input id="email" type="email" name="email" placeholder="anna@example.com" autocomplete="email" required>
-
                 <label class="form-label" for="package">Package</label>
                 <select id="package" name="package">
                     <option>The Essential (2.400 DKK)</option>
                     <option selected>The Professional (3.800 DKK)</option>
                     <option>The Portfolio (5.500 DKK)</option>
                 </select>
-
                 <label class="form-label" for="goals">Your Casting Goals</label>
                 <textarea id="goals" name="goals" placeholder="Tell me about your casting type, specific roles you want to target, or goals for this session…" rows="5" required></textarea>
-
                 <button type="submit" class="submit-btn">Request Session</button>
             </form>
         </div>
     </main>
-
-    <footer>
-        <small>&copy; 2026 Sennhaus &mdash; David Senn &mdash; Vesterbro, Copenhagen</small>
-    </footer>
-
+    <footer><small>&copy; 2026 Sennhaus &mdash; David Senn &mdash; Vesterbro, Copenhagen</small></footer>
 </body>
 </html>
